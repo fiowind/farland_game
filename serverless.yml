@@ -1,0 +1,23 @@
+service: farland
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  memorySize: 512
+
+stage: dev
+region: us-east-1
+
+plugins:
+  - serverless-nextjs-plugin
+  - serverless-offline
+
+custom:
+  serverless-nextjs:
+    nextConfigDir: ./
+
+package:
+  # exclude everything
+  # page handlers are automatically included by the plugin
+  exclude:
+    - ./**
